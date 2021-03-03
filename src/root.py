@@ -4,8 +4,8 @@ from frame.frame import Frame
 
 class Root:
     def __init__(self, title: str, frame: Frame = None):
-        self.Title = title
         self.App = tk.Tk()
+        self.update_title(title)
         if frame is None:
             self.Frame = Frame('Base')
         else:
@@ -19,6 +19,10 @@ class Root:
 
     def __str__(self):
         return str(self.__repr__())
+
+    def update_title(self, title: str):
+        self.__dict__['Title'] = title
+        self.App.title(title)
 
     def run(self):
         self.App.mainloop()
